@@ -8,6 +8,7 @@ interface Props {
   href?: string;
   variant?: "filled" | "outline";
   onClick?: () => void;
+  target?: string;
 }
 
 export default function GradientButton({
@@ -15,6 +16,7 @@ export default function GradientButton({
   href,
   variant = "filled",
   onClick,
+  target,
 }: Props) {
   const baseClasses =
     "relative inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 cursor-pointer";
@@ -40,7 +42,7 @@ export default function GradientButton({
 
   if (href) {
     return (
-      <a href={href} onClick={onClick}>
+      <a href={href} onClick={onClick} target={target} rel={target === "_blank" ? "noopener noreferrer" : undefined}>
         {Component}
       </a>
     );

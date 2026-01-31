@@ -15,7 +15,7 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16">
         <SectionHeading label="03 / Kontakt" title="Porozmawiajmy" />
 
-        <AnimatedSection className="max-w-2xl mx-auto text-center">
+        <AnimatedSection className="max-w-3xl mx-auto text-center">
           <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-10">
             Masz pomysł na projekt lub chcesz nawiązać współpracę? Chętnie
             porozmawiam o nowych możliwościach. Napisz do mnie!
@@ -38,7 +38,7 @@ export default function ContactSection() {
                 />
               </svg>
             </GradientButton>
-            <GradientButton href={SOCIAL_LINKS.linkedin} variant="outline">
+            <GradientButton href={SOCIAL_LINKS.linkedin} variant="outline" target="_blank">
               LinkedIn
             </GradientButton>
           </div>
@@ -48,17 +48,17 @@ export default function ContactSection() {
             {[
               {
                 label: "Email",
-                value: "adam@example.com",
+                value: "adam.nizialek1@gmail.com",
                 href: SOCIAL_LINKS.email,
               },
               {
                 label: "GitHub",
-                value: "github.com/adam",
+                value: "github.com/adamnizialek",
                 href: SOCIAL_LINKS.github,
               },
               {
                 label: "LinkedIn",
-                value: "linkedin.com/in/adam",
+                value: "linkedin.com/in/adam-nizialek",
                 href: SOCIAL_LINKS.linkedin,
               },
             ].map((item, i) => (
@@ -76,7 +76,7 @@ export default function ContactSection() {
                 <p className="text-xs font-mono text-text-muted uppercase tracking-[0.2em] mb-2">
                   {item.label}
                 </p>
-                <p className="text-sm text-text-secondary group-hover:text-neon-cyan transition-colors duration-300 truncate">
+                <p className="text-xs sm:text-sm text-text-secondary group-hover:text-neon-cyan transition-colors duration-300 truncate">
                   {item.value}
                 </p>
               </motion.a>

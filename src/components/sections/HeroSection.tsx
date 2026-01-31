@@ -31,7 +31,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex items-center gap-3 mb-8"
+            className="flex items-center gap-3 mb-6"
           >
             <div className="w-12 h-[2px] bg-gradient-to-r from-neon-purple to-neon-cyan" />
             <span className="font-mono text-sm tracking-[0.25em] text-text-secondary uppercase">
@@ -44,7 +44,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-6"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-5"
           >
             <span className="glitch-text" data-text={SITE_CONFIG.name}>
               {SITE_CONFIG.name}
@@ -56,7 +56,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 }}
-            className="text-xl md:text-2xl font-serif italic text-text-secondary mb-5"
+            className="text-xl md:text-2xl font-serif italic text-text-secondary mb-4"
           >
             {SITE_CONFIG.title}
           </motion.p>
@@ -66,7 +66,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0 }}
-            className="text-base md:text-lg text-text-muted max-w-lg leading-relaxed" style={{ marginBottom: '40px' }}
+            className="text-base md:text-lg text-text-muted max-w-lg leading-relaxed" style={{ marginBottom: '24px' }}
           >
             {SITE_CONFIG.description}
           </motion.p>
@@ -76,7 +76,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.2 }}
-            className="flex flex-wrap gap-5" style={{ marginTop: '8px', marginBottom: '40px' }}
+            className="flex flex-wrap gap-5" style={{ marginTop: '6px', marginBottom: '24px' }}
           >
             <GradientButton href="#projects" variant="filled">
               Zobacz projekty
@@ -160,21 +160,25 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <motion.button
+        onClick={() => {
+          const about = document.querySelector("#about");
+          about?.scrollIntoView({ behavior: "smooth" });
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
       >
-        <span className="font-mono text-[10px] tracking-[0.3em] text-text-muted uppercase">
+        <span className="font-mono text-[10px] tracking-[0.3em] text-text-muted uppercase group-hover:text-neon-cyan transition-colors duration-300">
           Scroll
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-[1px] h-8 bg-gradient-to-b from-neon-purple/60 to-transparent"
+          className="w-[1px] h-8 bg-gradient-to-b from-neon-purple/60 to-transparent group-hover:from-neon-cyan/80 transition-all duration-300"
         />
-      </motion.div>
+      </motion.button>
     </section>
   );
 }

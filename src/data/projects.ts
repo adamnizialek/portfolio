@@ -10,12 +10,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "project-1",
-    title: "Projekt Pierwszy",
+    title: "Chess App",
     description:
-      "Opis Twojego pierwszego projektu. Zmień ten tekst na opis prawdziwego projektu.",
-    tags: ["React", "TypeScript", "Tailwind"],
-    liveUrl: "#",
-    githubUrl: "#",
+      "Webowa gra w szachy online z nowoczesnym interfejsem i ciemnym motywem. Pozwala na rozgrywkę w przeglądarce.",
+    tags: ["React", "JavaScript", "CSS"],
+    liveUrl: "https://chess-app-adamnizialek.netlify.app/",
+    githubUrl: "https://github.com/adamnizialek/Chess-APP",
   },
   {
     id: "project-2",

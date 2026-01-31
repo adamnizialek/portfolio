@@ -6,9 +6,9 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com/",
-  linkedin: "https://linkedin.com/in/",
-  email: "mailto:adam@example.com",
+  github: "https://github.com/adamnizialek",
+  linkedin: "https://www.linkedin.com/in/adam-nizialek/",
+  email: "mailto:adam.nizialek1@gmail.com",
 } as const;
 
 export const SITE_CONFIG = {
