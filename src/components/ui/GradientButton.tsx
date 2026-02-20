@@ -19,7 +19,7 @@ export default function GradientButton({
   target,
 }: Props) {
   const baseClasses =
-    "relative inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 cursor-pointer";
+    "relative inline-flex items-center gap-2 px-6 py-3 sm:px-9 sm:py-4 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 cursor-pointer";
 
   const filledClasses =
     "bg-gradient-to-r from-neon-purple to-neon-cyan text-white hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:scale-105";
@@ -34,7 +34,6 @@ export default function GradientButton({
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       className={classes}
-      style={{ padding: '14px 32px' }}
     >
       {children}
     </motion.span>

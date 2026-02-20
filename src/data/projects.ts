@@ -19,20 +19,20 @@ export const projects: Project[] = [
   },
   {
     id: "project-2",
-    title: "Projekt Drugi",
+    title: "Avvenire Store",
     description:
-      "Opis drugiego projektu. Dodaj tutaj szczegóły dotyczące technologii i rozwiązań.",
-    tags: ["Next.js", "Node.js", "PostgreSQL"],
-    liveUrl: "#",
-    githubUrl: "#",
+      "Sklep internetowy z modą premium. Fullstack aplikacja e-commerce z nowoczesnym designem, systemem zarządzania produktami i koszykiem zakupowym.",
+    tags: ["Next.js", "TypeScript", "Docker"],
+    liveUrl: "https://avvenire.vercel.app/",
+    githubUrl: "https://github.com/adamnizialek/avvenire-store",
   },
   {
     id: "project-3",
-    title: "Projekt Trzeci",
+    title: "Stack Matcher",
     description:
-      "Opis trzeciego projektu. Opisz wyzwania i jak je rozwiązałeś.",
-    tags: ["Python", "Docker", "REST API"],
-    liveUrl: "#",
-    githubUrl: "#",
+      "Aplikacja pomagająca deweloperom dobrać technologie do projektu. Rekomendacje generowane przez AI, walidowane przez społeczność programistów.",
+    tags: ["Next.js", "TypeScript", "Prisma", "AI"],
+    liveUrl: "https://stack-matcher.vercel.app/",
+    githubUrl: "https://github.com/adamnizialek/stack-matcher",
   },
 ];

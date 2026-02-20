@@ -19,7 +19,7 @@ export default function SectionHeading({ label, title }: Props) {
       <span className="font-mono text-sm tracking-[0.3em] uppercase text-neon-cyan mb-4 block">
         {label}
       </span>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
         {title}
         <span className="text-neon-purple">.</span>
       </h2>

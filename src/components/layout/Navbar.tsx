@@ -31,7 +31,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="w-full h-16 md:h-20 flex items-center justify-between" style={{ padding: '0 3rem' }}>
+      <div className="w-full h-16 md:h-20 flex items-center justify-between px-5 sm:px-8 md:px-12">
         {/* Logo */}
         <button
           onClick={() => handleClick("#hero")}

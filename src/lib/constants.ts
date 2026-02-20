@@ -12,7 +12,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const SITE_CONFIG = {
-  name: "Adam",
+  name: "Adam Niziałek",
   title: "Full-Stack Developer",
   description:
     "Tworzę nowoczesne aplikacje webowe z pasją do czystego kodu i kreatywnego designu.",

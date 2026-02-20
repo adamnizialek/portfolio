@@ -6,11 +6,18 @@ import { projects } from "@/data/projects";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="relative py-28 md:py-36 lg:py-40">
-      {/* Background accent */}
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-neon-cyan/[0.03] blur-[120px] pointer-events-none" />
+    <section id="projects" className="relative py-28 md:py-36 lg:py-40 overflow-hidden">
+      {/* Background accents */}
+      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-neon-purple/[0.03] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-neon-cyan/[0.03] blur-[120px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16">
+      {/* Horizontal grid lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
+        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon-purple to-transparent" />
+        <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon-cyan to-transparent" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16 relative z-10">
         <SectionHeading label="02 / Projekty" title="Moje prace" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center">

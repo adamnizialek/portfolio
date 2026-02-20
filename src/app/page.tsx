@@ -16,11 +16,11 @@ export default function Home() {
       <CursorGlow />
       <Navbar />
       <HeroSection />
-      <div className="divider-glow mx-8 sm:mx-10 md:mx-12 lg:mx-16" />
+      <div className="divider-glow mx-5 sm:mx-10 md:mx-12 lg:mx-16" />
       <AboutSection />
-      <div className="divider-glow mx-8 sm:mx-10 md:mx-12 lg:mx-16" />
+      <div className="divider-glow mx-5 sm:mx-10 md:mx-12 lg:mx-16" />
       <ProjectsSection />
-      <div className="divider-glow mx-8 sm:mx-10 md:mx-12 lg:mx-16" />
+      <div className="divider-glow mx-5 sm:mx-10 md:mx-12 lg:mx-16" />
       <ContactSection />
       <Footer />
     </main>

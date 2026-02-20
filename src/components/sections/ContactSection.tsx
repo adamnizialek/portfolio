@@ -12,7 +12,7 @@ export default function ContactSection() {
       {/* Background accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-neon-purple/[0.04] blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16">
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-16">
         <SectionHeading label="03 / Kontakt" title="Porozmawiajmy" />
 
         <AnimatedSection className="max-w-3xl mx-auto text-center">

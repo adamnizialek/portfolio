@@ -17,7 +17,7 @@ export default function AboutSection() {
       {/* Background accent */}
       <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-neon-purple/[0.04] blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16">
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-16">
         <SectionHeading label="01 / O mnie" title="Kim jestem" />
 
         {/* Bio - centered */}
@@ -37,7 +37,7 @@ export default function AboutSection() {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 pt-8 mt-2 border-t border-border/30">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8 mt-2 border-t border-border/30">
             {[
               { value: "2+", label: "Lata doświadczenia" },
               { value: "10+", label: "Projekty" },
@@ -57,7 +57,7 @@ export default function AboutSection() {
 
         {/* Skills - centered grid */}
         <AnimatedSection delay={0.2}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 max-w-3xl mx-auto">
             {categories.map((category) => (
               <div key={category} className="text-center">
                 <h3 className="text-xs font-mono text-neon-cyan tracking-[0.25em] uppercase mb-4">
