@@ -1,12 +1,16 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { projects } from "@/data/projects";
 
+const DottedSurface = dynamic(() => import("@/components/ui/DottedSurface"), { ssr: false });
+
 export default function ProjectsSection() {
   return (
     <section id="projects" className="relative py-28 md:py-36 lg:py-40 overflow-hidden">
+      <DottedSurface />
       {/* Background accents */}
       <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-neon-purple/[0.03] blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-neon-cyan/[0.03] blur-[120px] pointer-events-none" />
