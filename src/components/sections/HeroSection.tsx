@@ -11,7 +11,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-0"
+      className="relative min-h-screen flex items-start sm:items-center overflow-hidden pt-20 sm:pt-0"
     >
       {/* Atmospheric background gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -24,7 +24,7 @@ export default function HeroSection() {
       <Scene />
 
       {/* Content */}
-      <div className="relative z-10 w-full px-8" style={{ marginLeft: 'clamp(4rem, 15vw, 20rem)' }}>
+      <div className="relative z-10 w-full px-5 sm:px-8" style={{ marginLeft: 'clamp(1rem, 8vw, 10rem)' }}>
         <div className="max-w-2xl text-left">
           {/* Tagline */}
           <motion.div
@@ -44,7 +44,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-5"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-5 sm:whitespace-nowrap"
           >
             <span className="glitch-text" data-text={SITE_CONFIG.name}>
               {SITE_CONFIG.name}
@@ -56,7 +56,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 }}
-            className="text-xl md:text-2xl font-serif italic text-text-secondary mb-4"
+            className="text-lg sm:text-xl md:text-2xl font-serif italic text-text-secondary mb-4"
           >
             {SITE_CONFIG.title}
           </motion.p>
@@ -76,7 +76,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.2 }}
-            className="flex flex-wrap gap-5" style={{ marginTop: '6px', marginBottom: '24px' }}
+            className="flex flex-wrap gap-3 sm:gap-5" style={{ marginTop: '6px', marginBottom: '24px' }}
           >
             <GradientButton href="#projects" variant="filled">
               Zobacz projekty
