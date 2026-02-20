@@ -1,14 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GradientButton from "@/components/ui/GradientButton";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
+const DotRain = dynamic(() => import("@/components/ui/DotRain"), { ssr: false });
+
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative py-28 md:py-36 lg:py-40">
+    <section id="contact" className="relative py-28 md:py-36 lg:py-40 overflow-hidden">
+      <DotRain />
       {/* Background accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-neon-purple/[0.04] blur-[140px] pointer-events-none" />
 
