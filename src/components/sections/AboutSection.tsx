@@ -1,8 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { skills } from "@/data/skills";
+
+const ShaderBackground = dynamic(() => import("@/components/ui/ShaderBackground"), { ssr: false });
 
 export default function AboutSection() {
   const categories = ["frontend", "backend", "tools"] as const;
@@ -13,7 +16,8 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="relative py-28 md:py-36 lg:py-40">
+    <section id="about" className="relative py-28 md:py-36 lg:py-40 overflow-hidden">
+      <ShaderBackground />
       {/* Background accent */}
       <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-neon-purple/[0.04] blur-[100px] pointer-events-none" />
 
