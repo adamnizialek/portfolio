@@ -6,6 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GradientButton from "@/components/ui/GradientButton";
 import { SOCIAL_LINKS } from "@/lib/constants";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const DotRain = dynamic(() => import("@/components/ui/DotRain"), { ssr: false });
 
@@ -75,8 +76,9 @@ export default function ContactSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i, duration: 0.5 }}
-                className="group p-5 rounded-xl border border-border bg-surface/30 hover:border-neon-purple/30 transition-all duration-300"
+                className="relative group p-5 rounded-xl border border-border bg-surface/30 hover:border-neon-purple/30 transition-all duration-300"
               >
+                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={3} disabled={false} />
                 <p className="text-xs font-mono text-text-muted uppercase tracking-[0.2em] mb-2">
                   {item.label}
                 </p>

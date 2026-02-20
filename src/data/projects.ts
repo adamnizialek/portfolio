@@ -31,7 +31,7 @@ export const projects: Project[] = [
     title: "Stack Matcher",
     description:
       "Aplikacja pomagająca deweloperom dobrać technologie do projektu. Rekomendacje generowane przez AI, walidowane przez społeczność programistów.",
-    tags: ["Next.js", "TypeScript", "Prisma", "AI"],
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AI"],
     liveUrl: "https://stack-matcher.vercel.app/",
     githubUrl: "https://github.com/adamnizialek/stack-matcher",
   },

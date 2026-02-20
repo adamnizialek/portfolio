@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { useRef } from "react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 interface Props {
   project: Project;
@@ -60,8 +61,9 @@ export default function ProjectCard({ project, index }: Props) {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="relative h-full"
+        className="relative h-full rounded-2xl"
       >
+        <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={3} disabled={false} />
         {/* Animated gradient border */}
         <div
           className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[1px]"

@@ -1,11 +1,19 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { skills } from "@/data/skills";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const ShaderBackground = dynamic(() => import("@/components/ui/ShaderBackground"), { ssr: false });
+
+const categoryAccents = {
+  frontend: { color: "#06b6d4" },
+  backend: { color: "#8b5cf6" },
+  tools: { color: "#ec4899" },
+} as const;
 
 export default function AboutSection() {
   const categories = ["frontend", "backend", "tools"] as const;
@@ -59,28 +67,62 @@ export default function AboutSection() {
           </div>
         </AnimatedSection>
 
-        {/* Skills - centered grid */}
+        {/* Skills */}
         <AnimatedSection delay={0.2}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 max-w-3xl mx-auto">
-            {categories.map((category) => (
-              <div key={category} className="text-center">
-                <h3 className="text-xs font-mono text-neon-cyan tracking-[0.25em] uppercase mb-4">
-                  {categoryLabels[category]}
-                </h3>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {skills
-                    .filter((s) => s.category === category)
-                    .map((skill) => (
-                      <span
-                        key={skill.name}
-                        className="px-3 py-1.5 text-sm font-mono rounded-lg border border-border bg-surface/50 text-text-secondary hover:border-neon-purple/40 hover:text-neon-purple transition-all duration-300 cursor-default"
-                      >
-                        {skill.name}
-                      </span>
-                    ))}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
+            {categories.map((category) => {
+              const accent = categoryAccents[category];
+              return (
+                <div
+                  key={category}
+                  className="relative group rounded-2xl border border-border/50 bg-surface/40 backdrop-blur-sm p-6 hover:border-white/10 transition-all duration-500"
+                >
+                  <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={3} disabled={false} />
+                  {/* Glow on hover */}
+                  <div
+                    className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[1px] -z-10"
+                    style={{ background: `linear-gradient(135deg, ${accent.color}30, transparent, ${accent.color}20)` }}
+                  />
+
+                  <h3
+                    className="text-xs font-mono tracking-[0.25em] uppercase mb-5 text-center"
+                    style={{ color: accent.color }}
+                  >
+                    {categoryLabels[category]}
+                  </h3>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {skills
+                      .filter((s) => s.category === category)
+                      .map((skill, i) => (
+                        <motion.span
+                          key={skill.name}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.05, duration: 0.3 }}
+                          whileHover={{ scale: 1.08, y: -2 }}
+                          className="px-3.5 py-2 text-sm font-mono rounded-xl border bg-background/60 text-text-secondary transition-all duration-300 cursor-default"
+                          style={{
+                            borderColor: `${accent.color}20`,
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = `${accent.color}60`;
+                            e.currentTarget.style.color = accent.color;
+                            e.currentTarget.style.boxShadow = `0 0 20px ${accent.color}15`;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = `${accent.color}20`;
+                            e.currentTarget.style.color = '';
+                            e.currentTarget.style.boxShadow = 'none';
+                          }}
+                        >
+                          {skill.name}
+                        </motion.span>
+                      ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </AnimatedSection>
       </div>

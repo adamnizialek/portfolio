@@ -12,7 +12,7 @@ const CursorGlow = dynamic(() => import("@/components/ui/CursorGlow"), { ssr: fa
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <CursorGlow />
       <Navbar />
       <HeroSection />
