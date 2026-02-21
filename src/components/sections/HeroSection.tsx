@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import GradientButton from "@/components/ui/GradientButton";
 import { SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -29,7 +29,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full px-5 sm:px-8 sm:ml-[clamp(1rem,8vw,10rem)]">
         <div className="max-w-2xl text-center sm:text-left mx-auto sm:mx-0">
           {/* Tagline */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
@@ -39,10 +39,10 @@ export default function HeroSection() {
             <span className="font-mono text-sm tracking-[0.25em] text-text-secondary uppercase">
               Portfolio
             </span>
-          </motion.div>
+          </m.div>
 
           {/* Name */}
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
@@ -51,30 +51,30 @@ export default function HeroSection() {
             <span className="glitch-text" data-text={SITE_CONFIG.name}>
               {SITE_CONFIG.name}
             </span>
-          </motion.h1>
+          </m.h1>
 
           {/* Title */}
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 }}
             className="text-lg sm:text-xl md:text-2xl font-serif italic text-text-secondary mb-6 sm:mb-4"
           >
             {SITE_CONFIG.title}
-          </motion.p>
+          </m.p>
 
           {/* Description */}
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0 }}
             className="text-base md:text-lg text-text-muted max-w-lg mx-auto sm:mx-0 leading-relaxed mb-8 sm:mb-6"
           >
             {t.hero.description}
-          </motion.p>
+          </m.p>
 
           {/* CTAs */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.2 }}
@@ -99,10 +99,10 @@ export default function HeroSection() {
             <GradientButton href="#contact" variant="outline">
               {t.hero.cta_contact}
             </GradientButton>
-          </motion.div>
+          </m.div>
 
           {/* Social links */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 1.4 }}
@@ -157,12 +157,12 @@ export default function HeroSection() {
                 />
               </svg>
             </a>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.button
+      <m.button
         onClick={() => {
           const about = document.querySelector("#about");
           about?.scrollIntoView({ behavior: "smooth" });
@@ -175,12 +175,12 @@ export default function HeroSection() {
         <span className="font-mono text-[10px] tracking-[0.3em] text-text-muted uppercase group-hover:text-neon-cyan transition-colors duration-300">
           Scroll
         </span>
-        <motion.div
+        <m.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-[1px] h-8 bg-gradient-to-b from-neon-purple/60 to-transparent group-hover:from-neon-cyan/80 transition-all duration-300"
         />
-      </motion.button>
+      </m.button>
     </section>
   );
 }

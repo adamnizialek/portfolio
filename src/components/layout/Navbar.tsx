@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Navbar() {
@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
+      <m.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -101,12 +101,12 @@ export default function Navbar() {
             />
           </button>
         </div>
-      </motion.nav>
+      </m.nav>
 
-      {/* Mobile menu — outside motion.nav to avoid transform containment */}
+      {/* Mobile menu — outside m.nav to avoid transform containment */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -114,7 +114,7 @@ export default function Navbar() {
           >
             <ul className="px-8 py-8 flex flex-col gap-5">
               {navLinks.map((link, i) => (
-                <motion.li
+                <m.li
                   key={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -127,9 +127,9 @@ export default function Navbar() {
                     <span className="text-neon-purple mr-2">0{i + 1}.</span>
                     {link.label}
                   </button>
-                </motion.li>
+                </m.li>
               ))}
-              <motion.li
+              <m.li
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}
@@ -142,9 +142,9 @@ export default function Navbar() {
                   <span className="text-text-muted/40">/</span>
                   <span className={locale === "pl" ? "text-neon-cyan" : "text-text-muted"}>PL</span>
                 </button>
-              </motion.li>
+              </m.li>
             </ul>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

@@ -14,7 +14,7 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 const STORAGE_KEY = "portfolio-locale";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("pl");
+  const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);

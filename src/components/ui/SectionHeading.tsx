@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 interface Props {
   label: string;
@@ -9,7 +9,7 @@ interface Props {
 
 export default function SectionHeading({ label, title }: Props) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -24,6 +24,6 @@ export default function SectionHeading({ label, title }: Props) {
         <span className="text-neon-purple">.</span>
       </h2>
       <div className="mt-5 w-24 h-[2px] bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto" />
-    </motion.div>
+    </m.div>
   );
 }

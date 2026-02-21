@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { skills } from "@/data/skills";
@@ -91,7 +91,7 @@ export default function AboutSection() {
                     {skills
                       .filter((s) => s.category === category)
                       .map((skill, i) => (
-                        <motion.span
+                        <m.span
                           key={skill.name}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
@@ -114,7 +114,7 @@ export default function AboutSection() {
                           }}
                         >
                           {skill.name}
-                        </motion.span>
+                        </m.span>
                       ))}
                   </div>
                 </div>

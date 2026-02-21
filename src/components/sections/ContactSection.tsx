@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GradientButton from "@/components/ui/GradientButton";
@@ -68,7 +68,7 @@ export default function ContactSection() {
                 href: SOCIAL_LINKS.linkedin,
               },
             ].map((item, i) => (
-              <motion.a
+              <m.a
                 key={item.label}
                 href={item.href}
                 target={item.href.startsWith("mailto:") ? undefined : "_blank"}
@@ -86,7 +86,7 @@ export default function ContactSection() {
                 <p className="text-xs sm:text-sm text-text-secondary group-hover:text-neon-cyan transition-colors duration-300 truncate">
                   {item.value}
                 </p>
-              </motion.a>
+              </m.a>
             ))}
           </div>
         </AnimatedSection>

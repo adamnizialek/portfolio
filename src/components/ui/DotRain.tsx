@@ -17,6 +17,7 @@ export default function DotRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number>(0);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -60,6 +61,8 @@ export default function DotRain() {
     }
 
     const animate = () => {
+      if (!isVisibleRef.current) return;
+
       ctx.clearRect(0, 0, width, height);
 
       for (const p of particles) {
@@ -84,6 +87,19 @@ export default function DotRain() {
 
     animationRef.current = requestAnimationFrame(animate);
 
+    // Visibility observer — pause rAF when off-screen
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisibleRef.current;
+        isVisibleRef.current = entry.isIntersecting;
+        if (!wasVisible && entry.isIntersecting) {
+          animationRef.current = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 }
+    );
+    intersectionObserver.observe(container);
+
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const { width: w, height: h } = entry.contentRect;
@@ -98,6 +114,7 @@ export default function DotRain() {
 
     return () => {
       cancelAnimationFrame(animationRef.current);
+      intersectionObserver.disconnect();
       resizeObserver.disconnect();
     };
   }, []);

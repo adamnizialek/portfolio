@@ -120,6 +120,7 @@ function compileShader(
 export default function ShaderBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -176,9 +177,24 @@ export default function ShaderBackground() {
     resize();
     window.addEventListener("resize", resize);
 
+    // Visibility observer — pause rAF when off-screen
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisibleRef.current;
+        isVisibleRef.current = entry.isIntersecting;
+        if (!wasVisible && entry.isIntersecting) {
+          animationRef.current = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 }
+    );
+    intersectionObserver.observe(canvas);
+
     const startTime = performance.now();
 
     const animate = () => {
+      if (!isVisibleRef.current) return;
+
       const elapsed = (performance.now() - startTime) / 1000;
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(iResolution, canvas.width, canvas.height);
@@ -192,6 +208,7 @@ export default function ShaderBackground() {
     return () => {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationRef.current);
+      intersectionObserver.disconnect();
       gl.deleteProgram(program);
       gl.deleteShader(vertexShader);
       gl.deleteShader(fragmentShader);

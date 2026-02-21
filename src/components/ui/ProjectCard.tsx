@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { m, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { useRef } from "react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -45,7 +45,7 @@ export default function ProjectCard({ project, index, translatedDescription }: P
   };
 
   return (
-    <motion.article
+    <m.article
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
@@ -57,7 +57,7 @@ export default function ProjectCard({ project, index, translatedDescription }: P
       className="group relative w-full"
       style={{ perspective: "1000px" }}
     >
-      <motion.div
+      <m.div
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -202,7 +202,7 @@ export default function ProjectCard({ project, index, translatedDescription }: P
             />
           </div>
         </div>
-      </motion.div>
-    </motion.article>
+      </m.div>
+    </m.article>
   );
 }

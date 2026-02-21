@@ -10,6 +10,7 @@ const SEPARATION = 3;
 export default function DottedSurface() {
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number>(0);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -90,10 +91,25 @@ export default function DottedSurface() {
     });
     resizeObserver.observe(container);
 
+    // Visibility observer — pause rAF when off-screen
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisibleRef.current;
+        isVisibleRef.current = entry.isIntersecting;
+        if (!wasVisible && entry.isIntersecting) {
+          animationRef.current = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 }
+    );
+    intersectionObserver.observe(container);
+
     // Animation
     const clock = new THREE.Clock();
 
     const animate = () => {
+      if (!isVisibleRef.current) return;
+
       const elapsed = clock.getElapsedTime();
       const posAttr = geometry.getAttribute("position") as THREE.BufferAttribute;
 
@@ -118,6 +134,7 @@ export default function DottedSurface() {
     return () => {
       cancelAnimationFrame(animationRef.current);
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
       geometry.dispose();
       material.dispose();
       renderer.dispose();
