@@ -1,11 +1,15 @@
+"use client";
+
 import { SOCIAL_LINKS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="border-t border-border/30 bg-background">
       <div className="max-w-7xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16 py-10 md:py-12 flex flex-col items-center justify-center gap-4 text-center">
         <p className="text-sm text-text-muted font-mono">
-          &copy; {new Date().getFullYear()} Adam. Wszelkie prawa zastrzeżone.
+          &copy; {new Date().getFullYear()} {t.footer.copyright}
         </p>
         <div className="flex items-center gap-6">
           <a

@@ -8,6 +8,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 interface Props {
   project: Project;
   index: number;
+  translatedDescription?: string;
 }
 
 const accentColors = [
@@ -16,7 +17,7 @@ const accentColors = [
   { from: "#ec4899", to: "#8b5cf6" },
 ];
 
-export default function ProjectCard({ project, index }: Props) {
+export default function ProjectCard({ project, index, translatedDescription }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
   const accent = accentColors[index % accentColors.length];
 
@@ -114,7 +115,7 @@ export default function ProjectCard({ project, index }: Props) {
             </div>
 
             <p className="text-text-secondary text-sm md:text-base leading-relaxed mb-6 max-w-md">
-              {project.description}
+              {translatedDescription ?? project.description}
             </p>
 
             {/* Spacer to push tags & links to bottom */}

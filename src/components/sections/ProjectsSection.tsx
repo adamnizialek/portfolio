@@ -4,10 +4,12 @@ import dynamic from "next/dynamic";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { projects } from "@/data/projects";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const DottedSurface = dynamic(() => import("@/components/ui/DottedSurface"), { ssr: false });
 
 export default function ProjectsSection() {
+  const { t } = useLanguage();
   return (
     <section id="projects" className="relative py-28 md:py-36 lg:py-40 overflow-hidden">
       <DottedSurface />
@@ -22,11 +24,16 @@ export default function ProjectsSection() {
       </div>
 
       <div className="max-w-6xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16 relative z-10">
-        <SectionHeading label="02 / Projekty" title="Moje prace" />
+        <SectionHeading label={t.projects.label} title={t.projects.title} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center">
           {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={i}
+              translatedDescription={t.project_descriptions[project.id as keyof typeof t.project_descriptions]}
+            />
           ))}
         </div>
       </div>

@@ -6,6 +6,7 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { skills } from "@/data/skills";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const ShaderBackground = dynamic(() => import("@/components/ui/ShaderBackground"), { ssr: false });
 
@@ -16,11 +17,12 @@ const categoryAccents = {
 } as const;
 
 export default function AboutSection() {
+  const { t } = useLanguage();
   const categories = ["frontend", "backend", "tools"] as const;
   const categoryLabels = {
-    frontend: "Frontend",
-    backend: "Backend",
-    tools: "Narzędzia",
+    frontend: t.about.category_frontend,
+    backend: t.about.category_backend,
+    tools: t.about.category_tools,
   };
 
   return (
@@ -30,30 +32,25 @@ export default function AboutSection() {
       <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-neon-purple/[0.04] blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-16">
-        <SectionHeading label="01 / O mnie" title="Kim jestem" />
+        <SectionHeading label={t.about.label} title={t.about.title} />
 
         {/* Bio - centered */}
         <AnimatedSection className="max-w-3xl mx-auto text-center space-y-6 mb-16">
           <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
-            Cześć! Jestem{" "}
-            <span className="text-text-primary font-semibold">Adam</span> —
-            programista z pasją do tworzenia nowoczesnych aplikacji webowych.
-            Specjalizuję się w budowaniu interaktywnych interfejsów
-            użytkownika i solidnych systemów backendowych.
+            {t.about.bio1_prefix}
+            <span className="text-text-primary font-semibold">{t.about.bio1_name}</span>
+            {t.about.bio1_suffix}
           </p>
           <p className="text-base text-text-muted leading-relaxed">
-            Wierzę, że najlepszy kod to taki, który jest jednocześnie wydajny
-            i elegancki. Każdy projekt traktuję jako okazję do nauki i
-            rozwiązywania realnych problemów. Kiedy nie koduję, rozwijam swoje
-            umiejętności w nowych technologiach i frameworkach.
+            {t.about.bio2}
           </p>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8 mt-2 border-t border-border/30">
             {[
-              { value: "2+", label: "Lata doświadczenia" },
-              { value: "5+", label: "Projekty" },
-              { value: "5+", label: "Technologii" },
+              { value: "2+", label: t.about.stat_experience },
+              { value: "5+", label: t.about.stat_projects },
+              { value: "5+", label: t.about.stat_technologies },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="text-2xl md:text-3xl font-bold gradient-text">

@@ -7,10 +7,12 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import GradientButton from "@/components/ui/GradientButton";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const DotRain = dynamic(() => import("@/components/ui/DotRain"), { ssr: false });
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="relative py-28 md:py-36 lg:py-40 overflow-hidden">
       <DotRain />
@@ -18,17 +20,16 @@ export default function ContactSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-neon-purple/[0.04] blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-16">
-        <SectionHeading label="03 / Kontakt" title="Porozmawiajmy" />
+        <SectionHeading label={t.contact.label} title={t.contact.title} />
 
         <AnimatedSection className="max-w-3xl mx-auto text-center">
           <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-10">
-            Masz pomysł na projekt lub chcesz nawiązać współpracę? Chętnie
-            porozmawiam o nowych możliwościach. Napisz do mnie!
+            {t.contact.body}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <GradientButton href={SOCIAL_LINKS.email} variant="filled">
-              Napisz email
+              {t.contact.email_button}
               <svg
                 className="w-4 h-4"
                 fill="none"

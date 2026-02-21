@@ -4,10 +4,12 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import GradientButton from "@/components/ui/GradientButton";
 import { SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const Scene = dynamic(() => import("@/components/three/Scene"), { ssr: false });
 
 export default function HeroSection() {
+  const { t } = useLanguage();
   return (
     <section
       id="hero"
@@ -68,7 +70,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 1.0 }}
             className="text-base md:text-lg text-text-muted max-w-lg mx-auto sm:mx-0 leading-relaxed mb-8 sm:mb-6"
           >
-            {SITE_CONFIG.description}
+            {t.hero.description}
           </motion.p>
 
           {/* CTAs */}
@@ -79,7 +81,7 @@ export default function HeroSection() {
             className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-5 mb-8 sm:mb-6"
           >
             <GradientButton href="#projects" variant="filled">
-              Zobacz projekty
+              {t.hero.cta_projects}
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -95,7 +97,7 @@ export default function HeroSection() {
               </svg>
             </GradientButton>
             <GradientButton href="#contact" variant="outline">
-              Kontakt
+              {t.hero.cta_contact}
             </GradientButton>
           </motion.div>
 

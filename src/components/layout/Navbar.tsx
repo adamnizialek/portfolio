@@ -2,11 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { locale, setLocale, t } = useLanguage();
+
+  const navLinks = [
+    { label: t.nav.home, href: "#hero" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -19,6 +27,8 @@ export default function Navbar() {
     const el = document.querySelector(href);
     el?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const toggleLocale = () => setLocale(locale === "pl" ? "en" : "pl");
 
   return (
     <>
@@ -44,18 +54,29 @@ export default function Navbar() {
           </button>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <button
-                  onClick={() => handleClick(link.href)}
-                  className="text-sm font-mono text-text-secondary hover:text-neon-cyan transition-colors duration-300 cursor-pointer tracking-wide"
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleClick(link.href)}
+                    className="text-sm font-mono text-text-secondary hover:text-neon-cyan transition-colors duration-300 cursor-pointer tracking-wide"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={toggleLocale}
+              className="flex items-center gap-1 text-xs font-mono px-3 py-1.5 rounded-lg border border-border/50 hover:border-neon-cyan/30 transition-all duration-300 cursor-pointer tracking-wide"
+              aria-label="Toggle language"
+            >
+              <span className={locale === "en" ? "text-neon-cyan" : "text-text-muted"}>EN</span>
+              <span className="text-text-muted/40">/</span>
+              <span className={locale === "pl" ? "text-neon-cyan" : "text-text-muted"}>PL</span>
+            </button>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -92,7 +113,7 @@ export default function Navbar() {
             className="md:hidden fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur-xl border-b border-border/50 overflow-hidden"
           >
             <ul className="px-8 py-8 flex flex-col gap-5">
-              {NAV_LINKS.map((link, i) => (
+              {navLinks.map((link, i) => (
                 <motion.li
                   key={link.href}
                   initial={{ opacity: 0, x: -20 }}
@@ -108,6 +129,20 @@ export default function Navbar() {
                   </button>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.08 }}
+              >
+                <button
+                  onClick={toggleLocale}
+                  className="flex items-center gap-2 text-lg font-mono cursor-pointer"
+                >
+                  <span className={locale === "en" ? "text-neon-cyan" : "text-text-muted"}>EN</span>
+                  <span className="text-text-muted/40">/</span>
+                  <span className={locale === "pl" ? "text-neon-cyan" : "text-text-muted"}>PL</span>
+                </button>
+              </motion.li>
             </ul>
           </motion.div>
         )}
