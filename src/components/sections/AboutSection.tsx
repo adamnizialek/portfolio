@@ -52,7 +52,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8 mt-2 border-t border-border/30">
             {[
               { value: "2+", label: "Lata doświadczenia" },
-              { value: "10+", label: "Projekty" },
+              { value: "5+", label: "Projekty" },
               { value: "5+", label: "Technologii" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">

@@ -21,73 +21,75 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="w-full h-16 md:h-20 flex items-center justify-between px-5 sm:px-8 md:px-12">
-        {/* Logo */}
-        <button
-          onClick={() => handleClick("#hero")}
-          className="text-lg font-bold tracking-tight cursor-pointer"
-        >
-          <span className="gradient-text">A</span>
-          <span className="text-text-primary">dam</span>
-          <span className="text-neon-purple">.</span>
-        </button>
+    <>
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="w-full h-16 md:h-20 flex items-center justify-between px-5 sm:px-8 md:px-12">
+          {/* Logo */}
+          <button
+            onClick={() => handleClick("#hero")}
+            className="text-lg font-bold tracking-tight cursor-pointer"
+          >
+            <span className="gradient-text">A</span>
+            <span className="text-text-primary">dam</span>
+            <span className="text-neon-purple">.</span>
+          </button>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <button
-                onClick={() => handleClick(link.href)}
-                className="text-sm font-mono text-text-secondary hover:text-neon-cyan transition-colors duration-300 cursor-pointer tracking-wide"
-              >
-                {link.label}
-              </button>
-            </li>
-          ))}
-        </ul>
+          {/* Desktop nav */}
+          <ul className="hidden md:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <button
+                  onClick={() => handleClick(link.href)}
+                  className="text-sm font-mono text-text-secondary hover:text-neon-cyan transition-colors duration-300 cursor-pointer tracking-wide"
+                >
+                  {link.label}
+                </button>
+              </li>
+            ))}
+          </ul>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center gap-1.5 cursor-pointer"
-          aria-label="Menu"
-        >
-          <span
-            className={`w-6 h-[2px] bg-text-primary transition-all duration-300 ${
-              mobileOpen ? "rotate-45 translate-y-[5px]" : ""
-            }`}
-          />
-          <span
-            className={`w-6 h-[2px] bg-text-primary transition-all duration-300 ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`w-6 h-[2px] bg-text-primary transition-all duration-300 ${
-              mobileOpen ? "-rotate-45 -translate-y-[5px]" : ""
-            }`}
-          />
-        </button>
-      </div>
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center gap-1.5 cursor-pointer"
+            aria-label="Menu"
+          >
+            <span
+              className={`w-6 h-[2px] bg-text-primary transition-all duration-300 ${
+                mobileOpen ? "rotate-45 translate-y-[5px]" : ""
+              }`}
+            />
+            <span
+              className={`w-6 h-[2px] bg-text-primary transition-all duration-300 ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`w-6 h-[2px] bg-text-primary transition-all duration-300 ${
+                mobileOpen ? "-rotate-45 -translate-y-[5px]" : ""
+              }`}
+            />
+          </button>
+        </div>
+      </motion.nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — outside motion.nav to avoid transform containment */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="md:hidden fixed inset-0 top-16 bg-background/95 backdrop-blur-xl border-b border-border/50 overflow-hidden"
+            className="md:hidden fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur-xl border-b border-border/50 overflow-hidden"
           >
             <ul className="px-8 py-8 flex flex-col gap-5">
               {NAV_LINKS.map((link, i) => (
@@ -110,6 +112,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

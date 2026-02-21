@@ -12,7 +12,7 @@ export const projects: Project[] = [
     id: "project-1",
     title: "Chess App",
     description:
-      "Webowa gra w szachy online z nowoczesnym interfejsem i ciemnym motywem. Pozwala na rozgrywkę w przeglądarce.",
+      "Webowa gra w szachy z możliwością rozgrywki przeciwko AI oraz podpowiedziami najlepszego ruchu. Nowoczesny interfejs z ciemnym motywem.",
     tags: ["React", "JavaScript", "CSS"],
     liveUrl: "https://chess-app-adamnizialek.netlify.app/",
     githubUrl: "https://github.com/adamnizialek/Chess-APP",

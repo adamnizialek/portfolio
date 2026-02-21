@@ -101,7 +101,11 @@ const GlowingEffect = memo(
     useEffect(() => {
       if (disabled) return;
 
-      const handleScroll = () => handleMove();
+      const handleScroll = () =>
+        handleMove({
+          x: lastPosition.current.x || window.innerWidth / 2,
+          y: lastPosition.current.y || window.innerHeight / 2,
+        });
       const handlePointerMove = (e: PointerEvent) => handleMove(e);
 
       window.addEventListener("scroll", handleScroll, { passive: true });

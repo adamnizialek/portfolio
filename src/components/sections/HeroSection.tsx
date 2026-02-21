@@ -33,7 +33,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="flex items-center justify-center sm:justify-start gap-3 mb-8 sm:mb-6"
           >
-            <div className="w-12 h-[2px] bg-gradient-to-r from-neon-purple to-neon-cyan" />
+            <div className="hidden sm:block w-12 h-[2px] bg-gradient-to-r from-neon-purple to-neon-cyan" />
             <span className="font-mono text-sm tracking-[0.25em] text-text-secondary uppercase">
               Portfolio
             </span>
@@ -142,11 +142,11 @@ export default function HeroSection() {
               aria-label="Email"
             >
               <svg
-                className="w-5 h-5"
+                className="w-[22px] h-[22px]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                strokeWidth={2}
+                strokeWidth={1.5}
               >
                 <path
                   strokeLinecap="round"
