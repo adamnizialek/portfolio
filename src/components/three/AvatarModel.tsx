@@ -1,24 +1,21 @@
 "use client";
 
-import { useRef, useSyncExternalStore } from "react";
+import { useRef } from "react";
 import { useGLTF, Float } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-
-const subscribe = (cb: () => void) => {
-  window.addEventListener("resize", cb);
-  return () => window.removeEventListener("resize", cb);
-};
-const getWindowHeight = () => window.innerHeight;
 
 export default function AvatarModel() {
   const { scene } = useGLTF("/models/avatar.glb");
   const groupRef = useRef<THREE.Group>(null);
   const { viewport } = useThree();
-  const windowHeight = useSyncExternalStore(subscribe, getWindowHeight, () => 800);
+  const initial = useRef({
+    vw: viewport.width,
+    wh: typeof window !== "undefined" ? window.innerHeight : 800,
+  });
 
-  const isMobile = viewport.width < 6;
-  const isShortMobile = isMobile && windowHeight < 700;
+  const isMobile = initial.current.vw < 6;
+  const isShortMobile = isMobile && initial.current.wh < 700;
   const scale = isShortMobile ? 1.2 : isMobile ? 1.4 : 2;
   const posX = isMobile ? 0 : 2;
   const posY = isShortMobile ? -1.8 : isMobile ? -1.5 : -1.2;
