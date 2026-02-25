@@ -13,7 +13,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-start sm:items-center overflow-hidden pt-32 sm:pt-0"
+      className="relative min-h-screen flex items-start sm:items-center overflow-hidden pt-24 sm:pt-0"
     >
       {/* Atmospheric background gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -33,7 +33,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex items-center justify-center sm:justify-start gap-3 mb-8 sm:mb-6"
+            className="flex items-center justify-center sm:justify-start gap-3 mb-4 sm:mb-6"
           >
             <div className="hidden sm:block w-12 h-[2px] bg-gradient-to-r from-neon-purple to-neon-cyan" />
             <span className="font-mono text-sm tracking-[0.25em] text-text-secondary uppercase">
@@ -46,7 +46,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-6 sm:mb-5 sm:whitespace-nowrap"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-4 sm:mb-5 sm:whitespace-nowrap"
           >
             <span className="glitch-text" data-text={SITE_CONFIG.name}>
               {SITE_CONFIG.name}
@@ -58,7 +58,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 }}
-            className="text-lg sm:text-xl md:text-2xl font-serif italic text-text-secondary mb-6 sm:mb-4"
+            className="text-lg sm:text-xl md:text-2xl font-serif italic text-text-secondary mb-4 sm:mb-4"
           >
             {SITE_CONFIG.title}
           </m.p>
@@ -68,7 +68,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0 }}
-            className="text-base md:text-lg text-text-muted max-w-lg mx-auto sm:mx-0 leading-relaxed mb-8 sm:mb-6"
+            className="text-base sm:text-base md:text-lg text-text-muted max-w-lg mx-auto sm:mx-0 leading-relaxed mb-6 sm:mb-6"
           >
             {t.hero.description}
           </m.p>
@@ -78,7 +78,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.2 }}
-            className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-5 mb-8 sm:mb-6"
+            className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-5 mb-5 sm:mb-6"
           >
             <GradientButton href="#projects" variant="filled">
               {t.hero.cta_projects}
